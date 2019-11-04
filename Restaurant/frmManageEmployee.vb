@@ -31,7 +31,11 @@ Public Class frmManageEmployee
             cmd = New SqlCommand("SELECT * FROM tblemployee ORDER BY id_employee DESC", conn)
             reader = cmd.ExecuteReader
             reader.Read()
-            Return CStr(CInt(reader.Item("id_employee")) + 1)
+            If reader.HasRows Then
+                Return CStr(CInt(reader.Item("id_employee")) + 1)
+            Else
+                Return 1
+            End If
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         Finally

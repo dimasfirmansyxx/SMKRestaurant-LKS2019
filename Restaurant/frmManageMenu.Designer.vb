@@ -74,6 +74,7 @@ Partial Class frmManageMenu
         '
         'txtphoto
         '
+        Me.txtphoto.Enabled = False
         Me.txtphoto.Location = New System.Drawing.Point(266, 420)
         Me.txtphoto.Name = "txtphoto"
         Me.txtphoto.Size = New System.Drawing.Size(184, 20)
@@ -95,6 +96,7 @@ Partial Class frmManageMenu
         '
         'txtid
         '
+        Me.txtid.Enabled = False
         Me.txtid.Location = New System.Drawing.Point(266, 336)
         Me.txtid.Name = "txtid"
         Me.txtid.Size = New System.Drawing.Size(184, 20)

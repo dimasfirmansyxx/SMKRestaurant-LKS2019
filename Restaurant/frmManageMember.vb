@@ -183,7 +183,29 @@ Public Class frmManageMember
     End Sub
 
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
-        btnUpdate.Text = "Update"
+        If btnDelete.Text = "Delete" Then
+            Dim rows As Integer = dgvdata.CurrentRow.Index
+            Dim id As String = dgvdata.Rows(rows).Cells(0).Value
+            Dim nama As String = dgvdata.Rows(rows).Cells(1).Value
+            If MessageBox.Show("Yakin ingin menghapus " & nama & " ?", "Yakin?", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+                Try
+                    conn.Open()
+                    cmd = New SqlCommand("DELETE FROM tblmember WHERE id_member = '" & id & "'", conn)
+                    Dim delete = cmd.ExecuteNonQuery
+                    If delete > 0 Then
+                        MessageBox.Show("Sukses")
+                    Else
+                        MessageBox.Show("Gagal")
+                    End If
+                Catch ex As Exception
+                    MessageBox.Show(ex.ToString)
+                Finally
+                    conn.Close()
+                    loadData()
+                End Try
+            End If
+        End If
+            btnUpdate.Text = "Update"
         btnDelete.Text = "Delete"
         btnDelete.Enabled = False
         btnUpdate.Enabled = False

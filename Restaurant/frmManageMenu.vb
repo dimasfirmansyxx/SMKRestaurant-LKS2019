@@ -99,21 +99,122 @@ Public Class frmManageMenu
                 txtid.Text = reader.Item("id_menu")
                 txtname.Text = reader.Item("name")
                 txtprice.Text = reader.Item("price")
-                Dim img As Byte() = System.Text.Encoding.UTF8.GetBytes(reader.Item("photo"))
+                Dim img() As Byte = reader.Item("photo")
 
                 Dim ms As New MemoryStream(img)
-                boxPicture.Image = Image.FromStream(ms)
+                boxPicture.BackgroundImage = Image.FromStream(ms)
+                boxPicture.BackgroundImageLayout = ImageLayout.Zoom
 
             Catch ex As Exception
                 MessageBox.Show(ex.ToString)
             Finally
                 conn.Close()
             End Try
+            btnInsert.Visible = False
+            btnUpdate.Text = "Save"
+            btnDelete.Text = "Cancel"
+        ElseIf btnUpdate.Text = "Save" Then
+            If txtphoto.Text = "" Or txtphoto.Text = " " Or IsNothing(txtphoto.Text) Then
+                Try
+                    conn.Open()
+                    Dim id, name, price, query As String
+                    id = txtid.Text
+                    name = txtname.Text
+                    price = txtprice.Text
+
+                    query = "UPDATE tblmenu SET 
+                                name = '" & name & "', price = '" & price & "' 
+                             WHERE id_menu = '" & id & "'"
+                    cmd = New SqlCommand(query, conn)
+
+                    Dim insert = cmd.ExecuteNonQuery
+                    If insert > 0 Then
+                        MessageBox.Show("Sukses")
+                    Else
+                        MessageBox.Show("Gagal")
+                    End If
+                Catch ex As Exception
+                    MessageBox.Show(ex.ToString)
+                Finally
+                    conn.Close()
+                End Try
+            Else
+                Dim id, name, price As String
+                id = txtid.Text
+                name = txtname.Text
+                price = txtprice.Text
+                Try
+                    conn.Open()
+                    cmd = New SqlCommand("DELETE FROM tblmenu WHERE id_menu = '" & id & "'", conn)
+                    cmd.ExecuteNonQuery()
+                Catch ex As Exception
+                    MessageBox.Show(ex.ToString())
+                Finally
+                    conn.Close()
+                End Try
+
+                Try
+                    conn.Open()
+                    Dim img As Byte()
+                    Dim fs As New FileStream(txtphoto.Text, FileMode.Open, FileAccess.Read)
+                    Dim br As New BinaryReader(fs)
+                    img = br.ReadBytes(CInt(fs.Length))
+
+                    cmd = New SqlCommand("SET IDENTITY_INSERT tblmenu ON 
+                                        INSERT INTO tblmenu (id_menu,name,price,photo) VALUES ('" & id & "','" & name & "','" & price & "',@image)", conn)
+                    cmd.Parameters.Add("@image", img)
+                    Dim insert = cmd.ExecuteNonQuery
+
+                    If insert > 0 Then
+                        MessageBox.Show("Sukses")
+                        cmd.Parameters.Clear()
+                    Else
+                        MessageBox.Show("Gagal")
+                    End If
+                Catch ex As Exception
+                    MessageBox.Show(ex.ToString)
+                Finally
+                    conn.Close()
+                End Try
+            End If
+            btnDelete.PerformClick()
         End If
     End Sub
 
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
-
+        If btnDelete.Text = "Delete" Then
+            Dim id As Integer
+            Dim menu As String
+            id = dgvdata.Rows(dgvselected).Cells(0).Value
+            menu = dgvdata.Rows(dgvselected).Cells(1).Value
+            If MessageBox.Show("Yakin ingin menghapus " & menu & " ?", "Yakin?", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+                Try
+                    conn.Open()
+                    cmd = New SqlCommand("DELETE FROM tblmenu WHERE id_menu = '" & id & "'", conn)
+                    Dim delete = cmd.ExecuteNonQuery
+                    If delete > 0 Then
+                        MessageBox.Show("Sukses")
+                    Else
+                        MessageBox.Show("Gagal")
+                    End If
+                Catch ex As Exception
+                    MessageBox.Show(ex.ToString)
+                Finally
+                    conn.Close()
+                End Try
+            End If
+        End If
+        btnInsert.Visible = True
+        btnUpdate.Text = "Update"
+        btnDelete.Text = "Delete"
+        btnUpdate.Enabled = False
+        btnDelete.Enabled = False
+        loadData()
+        txtid.Text = newMenuId()
+        txtname.Clear()
+        txtphoto.Clear()
+        txtprice.Clear()
+        boxPicture.BackgroundImage = Nothing
     End Sub
 
     Private Sub btnBrowse_Click(sender As Object, e As EventArgs) Handles btnBrowse.Click

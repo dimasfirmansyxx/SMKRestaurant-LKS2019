@@ -22,9 +22,6 @@ Partial Class frmManageMember
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.price = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.name = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.id_menu = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.btnInsert = New System.Windows.Forms.Button()
@@ -34,30 +31,14 @@ Partial Class frmManageMember
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.dgvdata = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.id_member = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.name = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.email = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.joindate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        CType(Me.dgvdata, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'price
-        '
-        Me.price.HeaderText = "Price"
-        Me.price.Name = "price"
-        Me.price.ReadOnly = True
-        Me.price.Width = 150
-        '
-        'name
-        '
-        Me.name.HeaderText = "Name"
-        Me.name.Name = "name"
-        Me.name.ReadOnly = True
-        Me.name.Width = 200
-        '
-        'id_menu
-        '
-        Me.id_menu.HeaderText = "Menu ID"
-        Me.id_menu.Name = "id_menu"
-        Me.id_menu.ReadOnly = True
         '
         'btnUpdate
         '
@@ -134,17 +115,17 @@ Partial Class frmManageMember
         Me.Label3.TabIndex = 35
         Me.Label3.Text = "Name"
         '
-        'DataGridView1
+        'dgvdata
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_menu, Me.name, Me.price})
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 57)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(648, 266)
-        Me.DataGridView1.TabIndex = 33
+        Me.dgvdata.AllowUserToAddRows = False
+        Me.dgvdata.AllowUserToDeleteRows = False
+        Me.dgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvdata.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_member, Me.name, Me.email, Me.joindate})
+        Me.dgvdata.Location = New System.Drawing.Point(12, 57)
+        Me.dgvdata.Name = "dgvdata"
+        Me.dgvdata.ReadOnly = True
+        Me.dgvdata.Size = New System.Drawing.Size(648, 266)
+        Me.dgvdata.TabIndex = 33
         '
         'Label1
         '
@@ -156,6 +137,31 @@ Partial Class frmManageMember
         Me.Label1.TabIndex = 32
         Me.Label1.Text = "Form Manage Member"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'id_member
+        '
+        Me.id_member.HeaderText = "Member ID"
+        Me.id_member.Name = "id_member"
+        Me.id_member.ReadOnly = True
+        '
+        'name
+        '
+        Me.name.HeaderText = "Name"
+        Me.name.Name = "name"
+        Me.name.ReadOnly = True
+        Me.name.Width = 200
+        '
+        'email
+        '
+        Me.email.HeaderText = "Email"
+        Me.email.Name = "email"
+        Me.email.ReadOnly = True
+        '
+        'joindate
+        '
+        Me.joindate.HeaderText = "Join Date"
+        Me.joindate.Name = "joindate"
+        Me.joindate.ReadOnly = True
         '
         'frmManageMember
         '
@@ -171,20 +177,17 @@ Partial Class frmManageMember
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.dgvdata)
         Me.Controls.Add(Me.Label1)
         Me.name = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        'New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Manage Member"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvdata, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents price As DataGridViewTextBoxColumn
-    Friend WithEvents name As DataGridViewTextBoxColumn
-    Friend WithEvents id_menu As DataGridViewTextBoxColumn
     Friend WithEvents btnUpdate As Button
     Friend WithEvents btnDelete As Button
     Friend WithEvents btnInsert As Button
@@ -194,6 +197,10 @@ Partial Class frmManageMember
     Friend WithEvents Label4 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents dgvdata As DataGridView
     Friend WithEvents Label1 As Label
+    Friend WithEvents id_member As DataGridViewTextBoxColumn
+    Friend WithEvents name As DataGridViewTextBoxColumn
+    Friend WithEvents email As DataGridViewTextBoxColumn
+    Friend WithEvents joindate As DataGridViewTextBoxColumn
 End Class

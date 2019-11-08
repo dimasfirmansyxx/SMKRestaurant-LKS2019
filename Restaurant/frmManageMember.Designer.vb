@@ -32,17 +32,19 @@ Partial Class frmManageMember
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.dgvdata = New System.Windows.Forms.DataGridView()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.id_member = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.name = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.email = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.joindate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtpassword = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         CType(Me.dgvdata, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnUpdate
         '
-        Me.btnUpdate.Location = New System.Drawing.Point(286, 419)
+        Me.btnUpdate.Location = New System.Drawing.Point(286, 449)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(76, 32)
         Me.btnUpdate.TabIndex = 44
@@ -51,7 +53,7 @@ Partial Class frmManageMember
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(374, 419)
+        Me.btnDelete.Location = New System.Drawing.Point(374, 449)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(76, 32)
         Me.btnDelete.TabIndex = 43
@@ -60,7 +62,7 @@ Partial Class frmManageMember
         '
         'btnInsert
         '
-        Me.btnInsert.Location = New System.Drawing.Point(195, 419)
+        Me.btnInsert.Location = New System.Drawing.Point(195, 449)
         Me.btnInsert.Name = "btnInsert"
         Me.btnInsert.Size = New System.Drawing.Size(76, 32)
         Me.btnInsert.TabIndex = 42
@@ -127,17 +129,6 @@ Partial Class frmManageMember
         Me.dgvdata.Size = New System.Drawing.Size(648, 266)
         Me.dgvdata.TabIndex = 33
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!)
-        Me.Label1.Location = New System.Drawing.Point(206, 10)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(286, 31)
-        Me.Label1.TabIndex = 32
-        Me.Label1.Text = "Form Manage Member"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
         'id_member
         '
         Me.id_member.HeaderText = "Member ID"
@@ -163,11 +154,40 @@ Partial Class frmManageMember
         Me.joindate.Name = "joindate"
         Me.joindate.ReadOnly = True
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!)
+        Me.Label1.Location = New System.Drawing.Point(206, 10)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(286, 31)
+        Me.Label1.TabIndex = 32
+        Me.Label1.Text = "Form Manage Member"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'txtpassword
+        '
+        Me.txtpassword.Location = New System.Drawing.Point(266, 422)
+        Me.txtpassword.Name = "txtpassword"
+        Me.txtpassword.Size = New System.Drawing.Size(184, 20)
+        Me.txtpassword.TabIndex = 41
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(192, 425)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(53, 13)
+        Me.Label5.TabIndex = 45
+        Me.Label5.Text = "Password"
+        '
         'frmManageMember
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(672, 460)
+        Me.ClientSize = New System.Drawing.Size(672, 490)
+        Me.Controls.Add(Me.txtpassword)
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.btnUpdate)
         Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.btnInsert)
@@ -180,7 +200,6 @@ Partial Class frmManageMember
         Me.Controls.Add(Me.dgvdata)
         Me.Controls.Add(Me.Label1)
         Me.name = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        'New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Manage Member"
         CType(Me.dgvdata, System.ComponentModel.ISupportInitialize).EndInit()
@@ -203,4 +222,6 @@ Partial Class frmManageMember
     Friend WithEvents name As DataGridViewTextBoxColumn
     Friend WithEvents email As DataGridViewTextBoxColumn
     Friend WithEvents joindate As DataGridViewTextBoxColumn
+    Friend WithEvents txtpassword As TextBox
+    Friend WithEvents Label5 As Label
 End Class

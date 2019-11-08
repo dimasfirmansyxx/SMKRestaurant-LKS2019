@@ -53,6 +53,7 @@ Public Class frmManageMember
         txtid.Enabled = False
         btnDelete.Enabled = False
         btnUpdate.Enabled = False
+        txtpassword.PasswordChar = "*"
     End Sub
 
     Private Sub dgvdata_Click(sender As Object, e As EventArgs) Handles dgvdata.Click
@@ -66,12 +67,15 @@ Public Class frmManageMember
             MessageBox.Show("Isi nama terlebih dahulu")
         ElseIf txtemail.Text = "" Or txtemail.Text = " " Or IsNothing(txtemail.Text) Then
             MessageBox.Show("Isi email terlebih dahulu")
+        ElseIf txtpassword.Text = "" Or txtpassword.Text = " " Or IsNothing(txtpassword.Text) Then
+            MessageBox.Show("Isi password terlebih dahulu")
         Else
-            Dim id, name, email, joindate As String
+            Dim id, name, email, password, joindate As String
             Dim email_availability As Boolean = False
             id = txtid.Text
             name = txtname.Text
             email = txtemail.Text
+            password = txtpassword.Text
             joindate = Format(Now, "yyyy-MM-dd HH:mm:ss")
 
             'cek email
@@ -95,8 +99,8 @@ Public Class frmManageMember
                 Try
                     conn.Open()
                     cmd = New SqlCommand("SET IDENTITY_INSERT tblmember ON
-                                            INSERT INTO tblmember(id_member,name,email,joindate) VALUES
-                                            ('" & id & "','" & name & "','" & email & "','" & joindate & "')", conn)
+                                            INSERT INTO tblmember(id_member,name,email,password,joindate) VALUES
+                                            ('" & id & "','" & name & "','" & email & "','" & password & "','" & joindate & "')", conn)
                     Dim insert = cmd.ExecuteNonQuery
 
                     If insert > 0 Then
@@ -106,6 +110,7 @@ Public Class frmManageMember
                     End If
                     txtname.Clear()
                     txtemail.Clear()
+                    txtpassword.Clear()
                 Catch ex As Exception
                     MessageBox.Show(ex.ToString)
                 Finally
@@ -114,6 +119,7 @@ Public Class frmManageMember
             End If
             loadData()
             txtid.Text = getNewId()
+
         End If
     End Sub
 
@@ -126,6 +132,8 @@ Public Class frmManageMember
             txtname.Text = dgvdata.Rows(dgvselected).Cells(1).Value
             txtemail.Text = dgvdata.Rows(dgvselected).Cells(2).Value
             oldmail = txtemail.Text
+            txtpassword.Visible = False
+            Label5.Visible = False
         ElseIf btnUpdate.Text = "Save" Then
             If txtname.Text = "" Or txtname.Text = " " Or IsNothing(txtname.Text) Then
                 MessageBox.Show("Isi nama terlebih dahulu")
@@ -166,7 +174,6 @@ Public Class frmManageMember
 
                         If update > 0 Then
                             MessageBox.Show("Berhasil")
-                            btnDelete.PerformClick()
                         Else
                             MessageBox.Show("Gagal")
                         End If
@@ -174,10 +181,13 @@ Public Class frmManageMember
                         MessageBox.Show(ex.ToString)
                     Finally
                         conn.Close()
-                        txtid.Text = getNewId()
+                        btnDelete.PerformClick()
                     End Try
                 End If
                 loadData()
+                txtid.Text = getNewId()
+                txtpassword.Visible = True
+                Label5.Visible = True
             End If
         End If
     End Sub
@@ -205,7 +215,10 @@ Public Class frmManageMember
                 End Try
             End If
         End If
-            btnUpdate.Text = "Update"
+        txtpassword.Visible = True
+        Label5.Visible = True
+        txtid.Text = getNewId()
+        btnUpdate.Text = "Update"
         btnDelete.Text = "Delete"
         btnDelete.Enabled = False
         btnUpdate.Enabled = False

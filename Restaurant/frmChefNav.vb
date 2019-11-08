@@ -9,4 +9,9 @@
         Dim changePassw As New frmChangePassword
         changePassw.Show()
     End Sub
+
+    Private Sub btnViewOrder_Click(sender As Object, e As EventArgs) Handles btnViewOrder.Click
+        Dim vieworder As New frmViewOrder
+        vieworder.Show()
+    End Sub
 End Class

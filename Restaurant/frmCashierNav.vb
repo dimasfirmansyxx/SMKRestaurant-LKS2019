@@ -9,4 +9,14 @@
         Dim changePassw As New frmChangePassword
         changePassw.Show()
     End Sub
+
+    Private Sub btnPayment_Click(sender As Object, e As EventArgs) Handles btnPayment.Click
+        Dim pay As New frmPayment
+        pay.Show()
+    End Sub
+
+    Private Sub btnOrder_Click(sender As Object, e As EventArgs) Handles btnOrder.Click
+        Dim order As New frmOrder
+        order.Show()
+    End Sub
 End Class

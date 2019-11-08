@@ -4,6 +4,7 @@ Imports System.IO
 Public Class frmOrder
 
     Dim id_menu_selected As Integer
+    Dim row_selected As Integer
     'New System.Windows.Forms.DataGridViewTextBoxColumn()
 
     Sub loadmenu()
@@ -27,6 +28,8 @@ Public Class frmOrder
     Private Sub frmOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         konek()
         loadmenu()
+        Dim userinfo() As String = Split(userlogin, "|")
+        MessageBox.Show(userinfo(1))
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
@@ -76,10 +79,27 @@ Public Class frmOrder
         txtQty.Enabled = False
         btnAdd.Enabled = False
         boxPicture.BackgroundImage = Nothing
+
+        If CInt(lbltotal.Text) > 0 Then
+            btnOrder.Enabled = True
+        Else
+            btnOrder.Enabled = False
+        End If
     End Sub
 
     Private Sub btnRemove_Click(sender As Object, e As EventArgs) Handles btnRemove.Click
-
+        Dim menu As String = dgvorder.Rows(row_selected).Cells(1).Value
+        Dim total As Integer = dgvorder.Rows(row_selected).Cells(4).Value
+        If MessageBox.Show("Yakin ingin menghapus " & menu & " ?", "Yakin?", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            lbltotal.Text = CStr(CInt(lbltotal.Text) - CInt(total))
+            dgvorder.Rows.RemoveAt(row_selected)
+        End If
+        btnRemove.Enabled = False
+        If CInt(lbltotal.Text) > 0 Then
+            btnOrder.Enabled = True
+        Else
+            btnOrder.Enabled = False
+        End If
     End Sub
 
     Private Sub dgvMenu_Click(sender As Object, e As EventArgs) Handles dgvMenu.Click
@@ -111,7 +131,8 @@ Public Class frmOrder
     End Sub
 
     Private Sub dgvorder_Click(sender As Object, e As EventArgs) Handles dgvorder.Click
-
+        row_selected = dgvorder.CurrentRow.Index
+        btnRemove.Enabled = True
     End Sub
 
     Private Sub cmbMember_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbMember.SelectedIndexChanged

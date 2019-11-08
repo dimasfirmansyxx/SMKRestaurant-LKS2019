@@ -28,12 +28,13 @@ Partial Class frmCashierNav
         Me.lblCashierName = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnOrder = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'btnLogout
         '
         Me.btnLogout.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.btnLogout.Location = New System.Drawing.Point(103, 200)
+        Me.btnLogout.Location = New System.Drawing.Point(96, 240)
         Me.btnLogout.Name = "btnLogout"
         Me.btnLogout.Size = New System.Drawing.Size(160, 34)
         Me.btnLogout.TabIndex = 21
@@ -43,7 +44,7 @@ Partial Class frmCashierNav
         'btnChangePassword
         '
         Me.btnChangePassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.btnChangePassword.Location = New System.Drawing.Point(103, 160)
+        Me.btnChangePassword.Location = New System.Drawing.Point(96, 200)
         Me.btnChangePassword.Name = "btnChangePassword"
         Me.btnChangePassword.Size = New System.Drawing.Size(160, 34)
         Me.btnChangePassword.TabIndex = 20
@@ -53,7 +54,7 @@ Partial Class frmCashierNav
         'btnPayment
         '
         Me.btnPayment.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.btnPayment.Location = New System.Drawing.Point(103, 120)
+        Me.btnPayment.Location = New System.Drawing.Point(96, 160)
         Me.btnPayment.Name = "btnPayment"
         Me.btnPayment.Size = New System.Drawing.Size(160, 34)
         Me.btnPayment.TabIndex = 19
@@ -90,11 +91,22 @@ Partial Class frmCashierNav
         Me.Label1.TabIndex = 16
         Me.Label1.Text = "Cashier Navigation"
         '
+        'btnOrder
+        '
+        Me.btnOrder.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.btnOrder.Location = New System.Drawing.Point(96, 120)
+        Me.btnOrder.Name = "btnOrder"
+        Me.btnOrder.Size = New System.Drawing.Size(160, 34)
+        Me.btnOrder.TabIndex = 0
+        Me.btnOrder.Text = "Order"
+        Me.btnOrder.UseVisualStyleBackColor = True
+        '
         'frmCashierNav
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(368, 261)
+        Me.ClientSize = New System.Drawing.Size(368, 297)
+        Me.Controls.Add(Me.btnOrder)
         Me.Controls.Add(Me.btnLogout)
         Me.Controls.Add(Me.btnChangePassword)
         Me.Controls.Add(Me.btnPayment)
@@ -115,4 +127,5 @@ Partial Class frmCashierNav
     Friend WithEvents lblCashierName As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents btnOrder As Button
 End Class

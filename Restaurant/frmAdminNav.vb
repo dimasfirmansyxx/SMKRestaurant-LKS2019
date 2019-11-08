@@ -14,4 +14,14 @@
         Dim mngEmployee As New frmManageEmployee
         mngEmployee.Show()
     End Sub
+
+    Private Sub btnManageMenu_Click(sender As Object, e As EventArgs) Handles btnManageMenu.Click
+        Dim mngMenu As New frmManageMenu
+        mngMenu.Show()
+    End Sub
+
+    Private Sub btnManageMember_Click(sender As Object, e As EventArgs) Handles btnManageMember.Click
+        Dim mngMember As New frmManageMember
+        mngMember.Show()
+    End Sub
 End Class

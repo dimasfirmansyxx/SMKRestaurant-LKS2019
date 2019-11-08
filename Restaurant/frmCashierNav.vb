@@ -15,7 +15,7 @@
         pay.Show()
     End Sub
 
-    Private Sub btnOrder_Click(sender As Object, e As EventArgs) Handles btnOrder.Click
+    Private Sub btnOrder_Click(sender As Object, e As EventArgs) 
         Dim order As New frmOrder
         order.Show()
     End Sub

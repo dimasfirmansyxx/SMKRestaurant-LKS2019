@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmCashierNav
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmCashierNav
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.btnLogout = New System.Windows.Forms.Button()
         Me.btnChangePassword = New System.Windows.Forms.Button()
@@ -28,13 +28,12 @@ Partial Class frmCashierNav
         Me.lblCashierName = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.btnOrder = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'btnLogout
         '
         Me.btnLogout.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.btnLogout.Location = New System.Drawing.Point(96, 240)
+        Me.btnLogout.Location = New System.Drawing.Point(96, 203)
         Me.btnLogout.Name = "btnLogout"
         Me.btnLogout.Size = New System.Drawing.Size(160, 34)
         Me.btnLogout.TabIndex = 21
@@ -44,7 +43,7 @@ Partial Class frmCashierNav
         'btnChangePassword
         '
         Me.btnChangePassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.btnChangePassword.Location = New System.Drawing.Point(96, 200)
+        Me.btnChangePassword.Location = New System.Drawing.Point(96, 163)
         Me.btnChangePassword.Name = "btnChangePassword"
         Me.btnChangePassword.Size = New System.Drawing.Size(160, 34)
         Me.btnChangePassword.TabIndex = 20
@@ -54,7 +53,7 @@ Partial Class frmCashierNav
         'btnPayment
         '
         Me.btnPayment.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.btnPayment.Location = New System.Drawing.Point(96, 160)
+        Me.btnPayment.Location = New System.Drawing.Point(96, 123)
         Me.btnPayment.Name = "btnPayment"
         Me.btnPayment.Size = New System.Drawing.Size(160, 34)
         Me.btnPayment.TabIndex = 19
@@ -91,22 +90,11 @@ Partial Class frmCashierNav
         Me.Label1.TabIndex = 16
         Me.Label1.Text = "Cashier Navigation"
         '
-        'btnOrder
-        '
-        Me.btnOrder.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.btnOrder.Location = New System.Drawing.Point(96, 120)
-        Me.btnOrder.Name = "btnOrder"
-        Me.btnOrder.Size = New System.Drawing.Size(160, 34)
-        Me.btnOrder.TabIndex = 0
-        Me.btnOrder.Text = "Order"
-        Me.btnOrder.UseVisualStyleBackColor = True
-        '
         'frmCashierNav
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(368, 297)
-        Me.Controls.Add(Me.btnOrder)
+        Me.ClientSize = New System.Drawing.Size(368, 263)
         Me.Controls.Add(Me.btnLogout)
         Me.Controls.Add(Me.btnChangePassword)
         Me.Controls.Add(Me.btnPayment)
@@ -127,5 +115,4 @@ Partial Class frmCashierNav
     Friend WithEvents lblCashierName As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents btnOrder As Button
 End Class

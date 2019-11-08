@@ -215,6 +215,7 @@ Partial Class frmOrder
         Me.Controls.Add(Me.boxPicture)
         Me.Controls.Add(Me.dgvMenu)
         Me.name = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        'New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Order"
         CType(Me.dgvMenu, System.ComponentModel.ISupportInitialize).EndInit()

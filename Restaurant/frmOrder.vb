@@ -26,6 +26,24 @@ Public Class frmOrder
         End Try
     End Sub
 
+    Function get_id_detail()
+        Try
+            conn.Open()
+            cmd = New SqlCommand("SELECT * FROM tblorderdetail ORDER BY id_detail DESC", conn)
+            reader = cmd.ExecuteReader
+            reader.Read()
+            If reader.HasRows Then
+                Return CStr(CInt(reader.Item("id_detail") + 1))
+            Else
+                Return 1
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString)
+        Finally
+            conn.Close()
+        End Try
+    End Function
+
     Private Sub frmOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         konek()
         loadmenu()
@@ -135,11 +153,76 @@ Public Class frmOrder
         btnRemove.Enabled = True
     End Sub
 
-    Private Sub cmbMember_SelectedIndexChanged(sender As Object, e As EventArgs)
-
-    End Sub
 
     Private Sub btnOrder_Click(sender As Object, e As EventArgs) Handles btnOrder.Click
+        Dim tblorder As Boolean
+        Dim id_order, id_employee, id_member, tanggal, payment, bank As String
 
+        'add to tblorder
+        id_order = Format(Now, "yyyyMMddHHmmss")
+        id_employee = "1"
+        id_member = userinfo(0)
+        tanggal = Format(Now, "dd/MM/yyyy")
+        payment = ""
+        bank = ""
+
+        Try
+            conn.Open()
+            cmd = New SqlCommand("INSERT INTO tblorder VALUES 
+                                  ('" & id_order & "','" & id_employee & "','" & id_member & "','" & tanggal & "',
+                                   '" & payment & "','" & bank & "')", conn)
+            Dim insert = cmd.ExecuteNonQuery
+            If insert > 0 Then
+                tblorder = True
+            Else
+                tblorder = False
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString())
+        Finally
+            conn.Close()
+        End Try
+
+        'add to tblorderdetail
+        Dim count As Integer = dgvorder.RowCount
+        Dim index As Integer = 0
+        While index < count
+            Dim id_detail, id_menu, qty, price, message As String
+            id_detail = get_id_detail()
+            id_menu = dgvorder.Rows(index).Cells(0).Value
+            qty = dgvorder.Rows(index).Cells(3).Value
+            price = dgvorder.Rows(index).Cells(2).Value
+            message = ""
+
+            Try
+                conn.Open()
+                cmd = New SqlCommand("SET IDENTITY_INSERT tblorderdetail ON
+                                      INSERT INTO tblorderdetail(id_detail,id_order,id_menu,qty,price,message) VALUES 
+                                      ('" & id_detail & "','" & id_order & "','" & id_menu & "',
+                                       '" & qty & "','" & price & "','" & message & "')", conn)
+                cmd.ExecuteNonQuery()
+            Catch ex As Exception
+                MessageBox.Show(ex.ToString())
+            Finally
+                conn.Close()
+            End Try
+
+            index += 1
+        End While
+
+        If tblorder = True Then
+            MessageBox.Show("Nomor order anda " & id_order & " berhasil")
+        Else
+            MessageBox.Show("Gagal")
+        End If
+
+        id_menu_selected = 0
+        txtName.Clear()
+        txtPrice.Clear()
+        txtQty.Clear()
+        txtQty.Enabled = False
+        btnAdd.Enabled = False
+        boxPicture.BackgroundImage = Nothing
+        dgvorder.Rows.Clear()
     End Sub
 End Class

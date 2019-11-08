@@ -41,7 +41,6 @@ Partial Class frmOrder
         Me.price_menu = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.qty = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.total = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cmbMember = New System.Windows.Forms.ComboBox()
         Me.btnOrder = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.lbltotal = New System.Windows.Forms.Label()
@@ -206,19 +205,10 @@ Partial Class frmOrder
         Me.total.Name = "total"
         Me.total.ReadOnly = True
         '
-        'cmbMember
-        '
-        Me.cmbMember.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbMember.FormattingEnabled = True
-        Me.cmbMember.Location = New System.Drawing.Point(208, 507)
-        Me.cmbMember.Name = "cmbMember"
-        Me.cmbMember.Size = New System.Drawing.Size(121, 21)
-        Me.cmbMember.TabIndex = 11
-        '
         'btnOrder
         '
         Me.btnOrder.Enabled = False
-        Me.btnOrder.Location = New System.Drawing.Point(208, 534)
+        Me.btnOrder.Location = New System.Drawing.Point(210, 508)
         Me.btnOrder.Name = "btnOrder"
         Me.btnOrder.Size = New System.Drawing.Size(121, 38)
         Me.btnOrder.TabIndex = 12
@@ -251,11 +241,10 @@ Partial Class frmOrder
         Me.AcceptButton = Me.btnAdd
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(546, 584)
+        Me.ClientSize = New System.Drawing.Size(546, 554)
         Me.Controls.Add(Me.lbltotal)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.btnOrder)
-        Me.Controls.Add(Me.cmbMember)
         Me.Controls.Add(Me.dgvorder)
         Me.Controls.Add(Me.btnRemove)
         Me.Controls.Add(Me.btnAdd)
@@ -297,7 +286,6 @@ Partial Class frmOrder
     Friend WithEvents price_menu As DataGridViewTextBoxColumn
     Friend WithEvents qty As DataGridViewTextBoxColumn
     Friend WithEvents total As DataGridViewTextBoxColumn
-    Friend WithEvents cmbMember As ComboBox
     Friend WithEvents btnOrder As Button
     Friend WithEvents Label4 As Label
     Friend WithEvents lbltotal As Label

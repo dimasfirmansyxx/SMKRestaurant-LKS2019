@@ -5,6 +5,7 @@ Public Class frmOrder
 
     Dim id_menu_selected As Integer
     Dim row_selected As Integer
+    Dim userinfo() As String
     'New System.Windows.Forms.DataGridViewTextBoxColumn()
 
     Sub loadmenu()
@@ -28,8 +29,7 @@ Public Class frmOrder
     Private Sub frmOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         konek()
         loadmenu()
-        Dim userinfo() As String = Split(userlogin, "|")
-        MessageBox.Show(userinfo(1))
+        userinfo = Split(userlogin, "|")
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
@@ -135,7 +135,7 @@ Public Class frmOrder
         btnRemove.Enabled = True
     End Sub
 
-    Private Sub cmbMember_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbMember.SelectedIndexChanged
+    Private Sub cmbMember_SelectedIndexChanged(sender As Object, e As EventArgs)
 
     End Sub
 

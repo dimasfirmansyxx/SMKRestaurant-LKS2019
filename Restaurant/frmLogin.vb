@@ -66,8 +66,6 @@ Public Class frmLogin
                     reader.Read()
                     If reader.HasRows Then
                         If reader.Item("password") = passwordCheck Then
-                            Dim orderform As New frmOrder
-                            orderform.Show()
                             Dim id_member, name, email, password, joindate As String
                             id_member = reader.Item("id_member")
                             name = reader.Item("name")
@@ -76,6 +74,8 @@ Public Class frmLogin
                             joindate = reader.Item("joindate")
                             mdlKoneksi.userlogin = id_member + "|" + name + "|" + email + "|" + password + "|" + joindate
                             logged = True
+                            Dim orderform As New frmOrder
+                            orderform.Show()
                             Me.Close()
                         Else
                             MessageBox.Show("Password Salah")

@@ -35,15 +35,19 @@ Partial Class frmOrder
         Me.txtPrice = New System.Windows.Forms.TextBox()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnRemove = New System.Windows.Forms.Button()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.dgvorder = New System.Windows.Forms.DataGridView()
         Me.id_order = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.menu = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.price_menu = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.qty = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.total = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cmbMember = New System.Windows.Forms.ComboBox()
+        Me.btnOrder = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lbltotal = New System.Windows.Forms.Label()
         CType(Me.dgvMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.boxPicture, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvorder, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'dgvMenu
@@ -117,6 +121,7 @@ Partial Class frmOrder
         '
         'txtName
         '
+        Me.txtName.Enabled = False
         Me.txtName.Location = New System.Drawing.Point(247, 217)
         Me.txtName.Name = "txtName"
         Me.txtName.Size = New System.Drawing.Size(192, 20)
@@ -124,6 +129,7 @@ Partial Class frmOrder
         '
         'txtQty
         '
+        Me.txtQty.Enabled = False
         Me.txtQty.Location = New System.Drawing.Point(247, 247)
         Me.txtQty.Name = "txtQty"
         Me.txtQty.Size = New System.Drawing.Size(192, 20)
@@ -131,6 +137,7 @@ Partial Class frmOrder
         '
         'txtPrice
         '
+        Me.txtPrice.Enabled = False
         Me.txtPrice.Location = New System.Drawing.Point(247, 277)
         Me.txtPrice.Name = "txtPrice"
         Me.txtPrice.Size = New System.Drawing.Size(192, 20)
@@ -138,6 +145,7 @@ Partial Class frmOrder
         '
         'btnAdd
         '
+        Me.btnAdd.Enabled = False
         Me.btnAdd.Location = New System.Drawing.Point(283, 303)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(75, 23)
@@ -147,6 +155,7 @@ Partial Class frmOrder
         '
         'btnRemove
         '
+        Me.btnRemove.Enabled = False
         Me.btnRemove.Location = New System.Drawing.Point(364, 303)
         Me.btnRemove.Name = "btnRemove"
         Me.btnRemove.Size = New System.Drawing.Size(75, 23)
@@ -154,17 +163,17 @@ Partial Class frmOrder
         Me.btnRemove.Text = "Remove"
         Me.btnRemove.UseVisualStyleBackColor = True
         '
-        'DataGridView1
+        'dgvorder
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_order, Me.menu, Me.price_menu, Me.qty, Me.total})
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 334)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(522, 167)
-        Me.DataGridView1.TabIndex = 10
+        Me.dgvorder.AllowUserToAddRows = False
+        Me.dgvorder.AllowUserToDeleteRows = False
+        Me.dgvorder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvorder.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_order, Me.menu, Me.price_menu, Me.qty, Me.total})
+        Me.dgvorder.Location = New System.Drawing.Point(12, 334)
+        Me.dgvorder.Name = "dgvorder"
+        Me.dgvorder.ReadOnly = True
+        Me.dgvorder.Size = New System.Drawing.Size(522, 167)
+        Me.dgvorder.TabIndex = 10
         '
         'id_order
         '
@@ -197,13 +206,57 @@ Partial Class frmOrder
         Me.total.Name = "total"
         Me.total.ReadOnly = True
         '
+        'cmbMember
+        '
+        Me.cmbMember.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbMember.FormattingEnabled = True
+        Me.cmbMember.Location = New System.Drawing.Point(208, 507)
+        Me.cmbMember.Name = "cmbMember"
+        Me.cmbMember.Size = New System.Drawing.Size(121, 21)
+        Me.cmbMember.TabIndex = 11
+        '
+        'btnOrder
+        '
+        Me.btnOrder.Enabled = False
+        Me.btnOrder.Location = New System.Drawing.Point(208, 534)
+        Me.btnOrder.Name = "btnOrder"
+        Me.btnOrder.Size = New System.Drawing.Size(121, 38)
+        Me.btnOrder.TabIndex = 12
+        Me.btnOrder.Text = "Order"
+        Me.btnOrder.UseVisualStyleBackColor = True
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(372, 508)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(74, 17)
+        Me.Label4.TabIndex = 13
+        Me.Label4.Text = "Total : Rp."
+        '
+        'lbltotal
+        '
+        Me.lbltotal.AutoSize = True
+        Me.lbltotal.BackColor = System.Drawing.Color.Transparent
+        Me.lbltotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbltotal.Location = New System.Drawing.Point(441, 508)
+        Me.lbltotal.Name = "lbltotal"
+        Me.lbltotal.Size = New System.Drawing.Size(16, 17)
+        Me.lbltotal.TabIndex = 14
+        Me.lbltotal.Text = "0"
+        '
         'frmOrder
         '
         Me.AcceptButton = Me.btnAdd
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(546, 511)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.ClientSize = New System.Drawing.Size(546, 584)
+        Me.Controls.Add(Me.lbltotal)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.btnOrder)
+        Me.Controls.Add(Me.cmbMember)
+        Me.Controls.Add(Me.dgvorder)
         Me.Controls.Add(Me.btnRemove)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.txtPrice)
@@ -215,12 +268,11 @@ Partial Class frmOrder
         Me.Controls.Add(Me.boxPicture)
         Me.Controls.Add(Me.dgvMenu)
         Me.name = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        'New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Order"
         CType(Me.dgvMenu, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.boxPicture, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvorder, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -239,10 +291,14 @@ Partial Class frmOrder
     Friend WithEvents txtPrice As TextBox
     Friend WithEvents btnAdd As Button
     Friend WithEvents btnRemove As Button
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents dgvorder As DataGridView
     Friend WithEvents id_order As DataGridViewTextBoxColumn
     Friend WithEvents menu As DataGridViewTextBoxColumn
     Friend WithEvents price_menu As DataGridViewTextBoxColumn
     Friend WithEvents qty As DataGridViewTextBoxColumn
     Friend WithEvents total As DataGridViewTextBoxColumn
+    Friend WithEvents cmbMember As ComboBox
+    Friend WithEvents btnOrder As Button
+    Friend WithEvents Label4 As Label
+    Friend WithEvents lbltotal As Label
 End Class

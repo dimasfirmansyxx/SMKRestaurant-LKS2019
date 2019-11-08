@@ -187,19 +187,19 @@ Public Class frmOrder
         Dim count As Integer = dgvorder.RowCount
         Dim index As Integer = 0
         While index < count
-            Dim id_detail, id_menu, qty, price, message As String
+            Dim id_detail, id_menu, qty, price, status As String
             id_detail = get_id_detail()
             id_menu = dgvorder.Rows(index).Cells(0).Value
             qty = dgvorder.Rows(index).Cells(3).Value
             price = dgvorder.Rows(index).Cells(2).Value
-            message = ""
+            status = "pending"
 
             Try
                 conn.Open()
                 cmd = New SqlCommand("SET IDENTITY_INSERT tblorderdetail ON
                                       INSERT INTO tblorderdetail(id_detail,id_order,id_menu,qty,price,message) VALUES 
                                       ('" & id_detail & "','" & id_order & "','" & id_menu & "',
-                                       '" & qty & "','" & price & "','" & message & "')", conn)
+                                       '" & qty & "','" & price & "','" & status & "')", conn)
                 cmd.ExecuteNonQuery()
             Catch ex As Exception
                 MessageBox.Show(ex.ToString())

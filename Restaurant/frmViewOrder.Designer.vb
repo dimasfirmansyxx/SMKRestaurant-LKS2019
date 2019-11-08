@@ -25,12 +25,12 @@ Partial Class frmViewOrder
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.cmbId = New System.Windows.Forms.ComboBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.dgv = New System.Windows.Forms.DataGridView()
         Me.id_detail = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.menu = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.qty = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.action = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.action = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -62,16 +62,16 @@ Partial Class frmViewOrder
         Me.cmbId.Size = New System.Drawing.Size(148, 21)
         Me.cmbId.TabIndex = 2
         '
-        'DataGridView1
+        'dgv
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_detail, Me.menu, Me.qty, Me.action})
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 97)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(409, 222)
-        Me.DataGridView1.TabIndex = 3
+        Me.dgv.AllowUserToAddRows = False
+        Me.dgv.AllowUserToDeleteRows = False
+        Me.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgv.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_detail, Me.menu, Me.qty, Me.action})
+        Me.dgv.Location = New System.Drawing.Point(12, 97)
+        Me.dgv.Name = "dgv"
+        Me.dgv.Size = New System.Drawing.Size(409, 222)
+        Me.dgv.TabIndex = 3
         '
         'id_detail
         '
@@ -97,20 +97,22 @@ Partial Class frmViewOrder
         Me.action.HeaderText = "Action"
         Me.action.Name = "action"
         Me.action.ReadOnly = True
+        Me.action.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.action.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         '
         'frmViewOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(433, 331)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.dgv)
         Me.Controls.Add(Me.cmbId)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Name = "frmViewOrder"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "View Order"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -119,9 +121,9 @@ Partial Class frmViewOrder
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents cmbId As ComboBox
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents dgv As DataGridView
     Friend WithEvents id_detail As DataGridViewTextBoxColumn
     Friend WithEvents menu As DataGridViewTextBoxColumn
     Friend WithEvents qty As DataGridViewTextBoxColumn
-    Friend WithEvents action As DataGridViewTextBoxColumn
+    Friend WithEvents action As DataGridViewComboBoxColumn
 End Class

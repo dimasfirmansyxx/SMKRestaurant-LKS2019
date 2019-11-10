@@ -22,9 +22,9 @@ Partial Class frmReport
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -73,6 +73,7 @@ Partial Class frmReport
         '
         Me.cmbFrom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbFrom.FormattingEnabled = True
+        Me.cmbFrom.Items.AddRange(New Object() {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"})
         Me.cmbFrom.Location = New System.Drawing.Point(174, 85)
         Me.cmbFrom.Name = "cmbFrom"
         Me.cmbFrom.Size = New System.Drawing.Size(160, 21)
@@ -82,6 +83,7 @@ Partial Class frmReport
         '
         Me.cmbTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbTo.FormattingEnabled = True
+        Me.cmbTo.Items.AddRange(New Object() {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"})
         Me.cmbTo.Location = New System.Drawing.Point(174, 120)
         Me.cmbTo.Name = "cmbTo"
         Me.cmbTo.Size = New System.Drawing.Size(160, 21)
@@ -122,16 +124,16 @@ Partial Class frmReport
         '
         'chart
         '
-        ChartArea1.Name = "ChartArea1"
-        Me.chart.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.chart.Legends.Add(Legend1)
+        ChartArea3.Name = "ChartArea1"
+        Me.chart.ChartAreas.Add(ChartArea3)
+        Legend3.Name = "Legend1"
+        Me.chart.Legends.Add(Legend3)
         Me.chart.Location = New System.Drawing.Point(12, 383)
         Me.chart.Name = "chart"
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.chart.Series.Add(Series1)
+        Series3.ChartArea = "ChartArea1"
+        Series3.Legend = "Legend1"
+        Series3.Name = "Series1"
+        Me.chart.Series.Add(Series3)
         Me.chart.Size = New System.Drawing.Size(490, 153)
         Me.chart.TabIndex = 12
         Me.chart.Text = "Chart1"

@@ -66,6 +66,7 @@ Public Class frmPayment
             cmbPayment.SelectedIndex = -1
             txtNumber.Clear()
             cmbBank.SelectedIndex = -1
+            lblTotal.Text = "0"
         End If
     End Sub
 

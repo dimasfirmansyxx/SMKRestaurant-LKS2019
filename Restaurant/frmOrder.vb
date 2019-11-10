@@ -170,7 +170,7 @@ Public Class frmOrder
             conn.Open()
             cmd = New SqlCommand("INSERT INTO tblorder VALUES 
                                   ('" & id_order & "','" & id_employee & "','" & id_member & "','" & tanggal & "',
-                                   '" & payment & "','" & bank & "')", conn)
+                                   '" & payment & "','" & bank & "','0')", conn)
             Dim insert = cmd.ExecuteNonQuery
             If insert > 0 Then
                 tblorder = True

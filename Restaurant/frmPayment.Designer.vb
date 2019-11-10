@@ -22,12 +22,7 @@ Partial Class frmPayment
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.id_detail = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.menu = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.price = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.qty = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.total = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgv = New System.Windows.Forms.DataGridView()
         Me.cmbId = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -40,50 +35,23 @@ Partial Class frmPayment
         Me.cmbBank = New System.Windows.Forms.ComboBox()
         Me.txtNumber = New System.Windows.Forms.TextBox()
         Me.btnSave = New System.Windows.Forms.Button()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.menu = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.price = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.qty = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.total = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'DataGridView1
+        'dgv
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_detail, Me.menu, Me.price, Me.qty, Me.total})
-        Me.DataGridView1.Location = New System.Drawing.Point(30, 119)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(464, 222)
-        Me.DataGridView1.TabIndex = 7
-        '
-        'id_detail
-        '
-        Me.id_detail.HeaderText = "id"
-        Me.id_detail.Name = "id_detail"
-        Me.id_detail.ReadOnly = True
-        Me.id_detail.Visible = False
-        '
-        'menu
-        '
-        Me.menu.HeaderText = "Menu"
-        Me.menu.Name = "menu"
-        Me.menu.ReadOnly = True
-        '
-        'price
-        '
-        Me.price.HeaderText = "Price"
-        Me.price.Name = "price"
-        Me.price.ReadOnly = True
-        '
-        'qty
-        '
-        Me.qty.HeaderText = "Qty"
-        Me.qty.Name = "qty"
-        Me.qty.ReadOnly = True
-        '
-        'total
-        '
-        Me.total.HeaderText = "Total"
-        Me.total.Name = "total"
-        Me.total.ReadOnly = True
+        Me.dgv.AllowUserToAddRows = False
+        Me.dgv.AllowUserToDeleteRows = False
+        Me.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgv.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.menu, Me.price, Me.qty, Me.total})
+        Me.dgv.Location = New System.Drawing.Point(30, 119)
+        Me.dgv.Name = "dgv"
+        Me.dgv.Size = New System.Drawing.Size(464, 222)
+        Me.dgv.TabIndex = 7
         '
         'cmbId
         '
@@ -162,7 +130,9 @@ Partial Class frmPayment
         'cmbPayment
         '
         Me.cmbPayment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbPayment.Enabled = False
         Me.cmbPayment.FormattingEnabled = True
+        Me.cmbPayment.Items.AddRange(New Object() {"Credit Card", "Debit Card"})
         Me.cmbPayment.Location = New System.Drawing.Point(226, 371)
         Me.cmbPayment.Name = "cmbPayment"
         Me.cmbPayment.Size = New System.Drawing.Size(148, 21)
@@ -171,7 +141,9 @@ Partial Class frmPayment
         'cmbBank
         '
         Me.cmbBank.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbBank.Enabled = False
         Me.cmbBank.FormattingEnabled = True
+        Me.cmbBank.Items.AddRange(New Object() {"BNI", "BCA", "Mandiri"})
         Me.cmbBank.Location = New System.Drawing.Point(226, 423)
         Me.cmbBank.Name = "cmbBank"
         Me.cmbBank.Size = New System.Drawing.Size(148, 21)
@@ -179,6 +151,7 @@ Partial Class frmPayment
         '
         'txtNumber
         '
+        Me.txtNumber.Enabled = False
         Me.txtNumber.Location = New System.Drawing.Point(226, 397)
         Me.txtNumber.Name = "txtNumber"
         Me.txtNumber.Size = New System.Drawing.Size(148, 20)
@@ -186,12 +159,37 @@ Partial Class frmPayment
         '
         'btnSave
         '
+        Me.btnSave.Enabled = False
         Me.btnSave.Location = New System.Drawing.Point(299, 450)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 23)
         Me.btnSave.TabIndex = 16
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = True
+        '
+        'menu
+        '
+        Me.menu.HeaderText = "Menu"
+        Me.menu.Name = "menu"
+        Me.menu.ReadOnly = True
+        '
+        'price
+        '
+        Me.price.HeaderText = "Price"
+        Me.price.Name = "price"
+        Me.price.ReadOnly = True
+        '
+        'qty
+        '
+        Me.qty.HeaderText = "Qty"
+        Me.qty.Name = "qty"
+        Me.qty.ReadOnly = True
+        '
+        'total
+        '
+        Me.total.HeaderText = "Total"
+        Me.total.Name = "total"
+        Me.total.ReadOnly = True
         '
         'frmPayment
         '
@@ -207,25 +205,20 @@ Partial Class frmPayment
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.lblTotal)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.dgv)
         Me.Controls.Add(Me.cmbId)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Name = "frmPayment"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Payment"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents id_detail As DataGridViewTextBoxColumn
-    Friend WithEvents menu As DataGridViewTextBoxColumn
-    Friend WithEvents price As DataGridViewTextBoxColumn
-    Friend WithEvents qty As DataGridViewTextBoxColumn
-    Friend WithEvents total As DataGridViewTextBoxColumn
+    Friend WithEvents dgv As DataGridView
     Friend WithEvents cmbId As ComboBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
@@ -238,4 +231,8 @@ Partial Class frmPayment
     Friend WithEvents cmbBank As ComboBox
     Friend WithEvents txtNumber As TextBox
     Friend WithEvents btnSave As Button
+    Friend WithEvents menu As DataGridViewTextBoxColumn
+    Friend WithEvents price As DataGridViewTextBoxColumn
+    Friend WithEvents qty As DataGridViewTextBoxColumn
+    Friend WithEvents total As DataGridViewTextBoxColumn
 End Class

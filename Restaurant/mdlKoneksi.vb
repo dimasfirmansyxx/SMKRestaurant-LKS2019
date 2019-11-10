@@ -4,7 +4,7 @@ Module mdlKoneksi
     Public conn As New SqlConnection
     Public reader As SqlDataReader
     Public cmd As New SqlCommand
-    Public str As String = "Data Source=DESKTOP-GQC0B0E\SQLSERVER;Initial Catalog=dbresto;Persist Security Info=true;UID=sa;PWD=123"
+    Public str As String = "Data Source=DIMAS\SQLEXPRESS;Initial Catalog=dbresto;Persist Security Info=true;UID=sa;PWD=123"
     Public userlogin As String
 
     Public Sub konek()

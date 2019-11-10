@@ -29,7 +29,6 @@ Partial Class frmViewOrder
         Me.id_detail = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.menu = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.qty = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.action = New System.Windows.Forms.DataGridViewComboBoxColumn()
         CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -67,7 +66,7 @@ Partial Class frmViewOrder
         Me.dgv.AllowUserToAddRows = False
         Me.dgv.AllowUserToDeleteRows = False
         Me.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_detail, Me.menu, Me.qty, Me.action})
+        Me.dgv.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_detail, Me.menu, Me.qty})
         Me.dgv.Location = New System.Drawing.Point(12, 97)
         Me.dgv.Name = "dgv"
         Me.dgv.Size = New System.Drawing.Size(409, 222)
@@ -91,14 +90,6 @@ Partial Class frmViewOrder
         Me.qty.HeaderText = "Qty"
         Me.qty.Name = "qty"
         Me.qty.ReadOnly = True
-        '
-        'action
-        '
-        Me.action.HeaderText = "Action"
-        Me.action.Name = "action"
-        Me.action.ReadOnly = True
-        Me.action.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.action.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         '
         'frmViewOrder
         '
@@ -125,5 +116,4 @@ Partial Class frmViewOrder
     Friend WithEvents id_detail As DataGridViewTextBoxColumn
     Friend WithEvents menu As DataGridViewTextBoxColumn
     Friend WithEvents qty As DataGridViewTextBoxColumn
-    Friend WithEvents action As DataGridViewComboBoxColumn
 End Class

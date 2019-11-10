@@ -197,7 +197,7 @@ Public Class frmOrder
             Try
                 conn.Open()
                 cmd = New SqlCommand("SET IDENTITY_INSERT tblorderdetail ON
-                                      INSERT INTO tblorderdetail(id_detail,id_order,id_menu,qty,price,message) VALUES 
+                                      INSERT INTO tblorderdetail(id_detail,id_order,id_menu,qty,price,status) VALUES 
                                       ('" & id_detail & "','" & id_order & "','" & id_menu & "',
                                        '" & qty & "','" & price & "','" & status & "')", conn)
                 cmd.ExecuteNonQuery()

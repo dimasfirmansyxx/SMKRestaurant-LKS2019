@@ -41,11 +41,11 @@ Public Class frmLogin
                         handphone = reader.Item("handphone")
                         position = reader.Item("position")
                         mdlKoneksi.userlogin = id_employee + "|" + name + "|" + email + "|" + password + "|" + handphone + "|" + position
-                        logged = True
                         Me.Close()
                     Else
                         MessageBox.Show("Password Salah")
                     End If
+                    logged = True
                 Else
                     logged = False
                 End If

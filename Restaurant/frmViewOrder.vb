@@ -33,6 +33,13 @@ Public Class frmViewOrder
 
     Private Sub frmViewOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         get_order()
+        Dim cmb As New DataGridViewComboBoxColumn
+        cmb.Items.Add("Pending")
+        cmb.Items.Add("Cooking")
+        cmb.Items.Add("Deliver")
+
+        dgv.Columns.Add(cmb)
+        dgv.Columns(3).HeaderText = "Action"
     End Sub
 
     Private Sub cmbId_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbId.SelectedIndexChanged
@@ -47,14 +54,6 @@ Public Class frmViewOrder
                 dgv.Rows(newrow).Cells(1).Value = reader.Item("id_menu")
                 dgv.Rows(newrow).Cells(2).Value = reader.Item("qty")
 
-                Dim cmb As New DataGridViewComboBoxColumn
-                'dgv.Columns.Add("cmb", "Action")
-                'dgv.Columns.Add(cmb)
-                dgv.Rows(newrow).Cells(3).Value = cmb
-
-                cmb.Items.Add("Pending")
-                cmb.Items.Add("Cooking")
-                cmb.Items.Add("Deliver")
             End While
         Catch ex As Exception
             MessageBox.Show(ex.ToString)

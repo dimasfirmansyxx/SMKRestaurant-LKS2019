@@ -117,6 +117,7 @@ Public Class frmManageEmployee
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         Dim oldmail As String = ""
+        dgvSelectedIndex = dgv.CurrentRow.Index
         If btnUpdate.Text = "Update" Then
             oldmail = dgv.Rows(dgvSelectedIndex).Cells(2).Value
             txtid.Text = dgv.Rows(dgvSelectedIndex).Cells(0).Value
